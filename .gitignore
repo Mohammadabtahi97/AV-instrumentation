@@ -1,0 +1,7 @@
+# ignore large map databases
+*.db
+
+# ignore captured data — too large for git
+
+# ignore docker internals
+.env

@@ -1,0 +1,22 @@
+services:
+  multisense:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: multisense-thor:humble
+    container_name: multisense
+    network_mode: host
+    ipc: host
+    volumes:
+      - ~/multisense-thor/scripts:/ws/scripts
+      - ~/maps:/root/.ros
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    environment:
+      - DISPLAY=${DISPLAY}
+      - ROS_DOMAIN_ID=0
+      - QT_X11_NO_MITSHM=1
+      - RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+      - LIBGL_ALWAYS_SOFTWARE=1
+    stdin_open: true
+    tty: true
+    command: ["bash"]
